@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@layer base {
+    :root {
+        --color-text-base: #121212;
+        --color-text-secondary: #4b5563;
+        --color-text-tertiary: #6b7280;
+        --color-border-accent: #a1a2a5;;
+        --color-bg-primary: #ffffff;
+        --color-bg-secondary: #f3f4f6;
+        --color-btn-text: #f3f4f6;
+    }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+    .dark {
+        --color-text-base: #F2F2F2;
+        --color-text-secondary: #b8b6b6;
+        --color-text-tertiary: #74777a;
+        --color-border-accent: #74777a;
+        --color-bg-primary: #0A0A0A;
+        --color-bg-secondary: #221f1f;
+        --color-btn-text: #221f1f;
+    }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+    .redish {
+        --color-btn-background: #dc2626;
+    }
 
-.App-link {
-  color: #61dafb;
-}
+    .bluish {
+        --color-btn-background: #2563eb;
+    }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    .greenish {
+        --color-btn-background: #059669;
+    }
+
+    .orangish {
+        --color-btn-background: #f97316;
+    }
+
+    .yellowish {
+        --color-btn-background: #f59e0b;
+    }
+
+    .violetish {
+        --color-btn-background: #7c3aed;
+    }
+
 }

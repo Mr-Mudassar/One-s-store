@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Layout from "./layout";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import Dashboard from "./pages/dashboard";
+import useStore from "./hooks/useStore";
+import { useEffect } from "react";
 
 function App() {
+  const appThemeColor = useStore((state) => state.appThemeColor);
+  const setAppThemeColor = useStore((state) => state.setAppThemeColor);
+
+  useEffect(() => {
+    setAppThemeColor("redish")
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`bg-theme-secondaryBg ${appThemeColor}`}>
+      {/* Main layout */}
+      <Layout>
+
+        <Router>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/login" element={<div>Login</div>} />
+            <Route path="/register" element={<div>Register</div>} />
+            <Route path="*" element={<div>error;</div>} />
+          </Routes>
+        </Router>
+      </Layout>
     </div>
   );
 }
