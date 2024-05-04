@@ -6,10 +6,10 @@ import LoginImg from "../../assests/login-page-illustaration.png"
 
 const Login = () => {
     return (
-        <div className="min-h-screen flex justify-center">
+        <div className="flex justify-center items-center">
 
             {/* Form  */}
-            <div className="max-w-screen-xl m-0 sm:m-10 shadow sm:rounded-lg flex justify-center flex-1 bg-theme-primaryBg p-4 sm:p-0">
+            <div className="max-w-screen-xl m-0 sm:m-10 shadow sm:rounded-lg flex justify-center items-center flex-1 bg-theme-primaryBg p-4 sm:p-0">
                 <div className="lg:w-1/2 xl:w-5/12 p-0 sm:p-12">
 
                     {/* <div> */}
@@ -73,7 +73,7 @@ const Login = () => {
                 {/* Image illustration */}
                 <div className="flex-1 bg-theme-primaryBg text-center hidden lg:flex rounded-md h-[450px] items-center">
                     <img
-                        className="object-cover pt-6 m-auto"
+                        className="object-cover mx-auto"
                         src={LoginImg}
                         alt="one's store login screen illustration"
                     />
