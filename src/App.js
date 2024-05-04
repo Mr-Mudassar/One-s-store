@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import useStore from "./hooks/useStore";
 import { useEffect } from "react";
+import Login from "./pages/auth/login"
 
 function App() {
   const appThemeColor = useStore((state) => state.appThemeColor);
@@ -21,7 +22,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/login" element={<div>Login</div>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<div>Register</div>} />
             <Route path="*" element={<div>error;</div>} />
           </Routes>

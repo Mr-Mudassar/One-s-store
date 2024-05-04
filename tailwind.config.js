@@ -10,6 +10,7 @@ module.exports = {
           secondary: "var(--color-text-secondary)",
           tertiary: "var(--color-text-tertiary)",
           btnColor: "var(--color-btn-text)",
+          btnBgText: "var(--color-btn-color)",
         },
       },
       backgroundColor: {

@@ -25,26 +25,32 @@
 
     .redish {
         --color-btn-background: #dc2626;
+        --color-btn-color: #dc2626;
     }
 
     .bluish {
         --color-btn-background: #2563eb;
+        --color-btn-color: #2563eb;
     }
 
     .greenish {
         --color-btn-background: #059669;
+        --color-btn-color: #059669;
     }
 
     .orangish {
         --color-btn-background: #f97316;
+        --color-btn-color: #f97316;
     }
 
     .yellowish {
         --color-btn-background: #f59e0b;
+        --color-btn-color: #f59e0b;
     }
 
     .violetish {
         --color-btn-background: #7c3aed;
+        --color-btn-color: #7c3aed;
     }
 
 }
