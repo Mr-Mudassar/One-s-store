@@ -4,7 +4,7 @@ import Buttons from "./buttons";
 
 const MainCard = () => {
   return (
-    <div className="bg-theme-primaryBg grid grid-cols-1 sm:grid-cols-2 justify-around p-6 gap-6 rounded-lg col-span-2 ">
+    <div className="bg-theme-primaryBg grid grid-cols-1 sm:grid-cols-2 justify-around p-6 gap-6 rounded-lg col-span-1 md:col-span-2 ">
         <img
           src="https://th.bing.com/th/id/OIP.lJYQUzKQE7h4AfM-Du5UdAAAAA?w=400&h=461&rs=1&pid=ImgDetMain"
           alt="product"
