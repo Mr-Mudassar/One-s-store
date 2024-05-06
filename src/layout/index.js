@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <Sidebar />
       <div 
         onClick={() => setUserDetailsModel(false) }
-        className={`mt-[66px] ml-14 p-6 h-[100vh] border-2 border-red-600 ${
+        className={`mt-[66px] ml-14 p-6 h-[100vh] ${
           toggleSidebar ? "md:ml-[258px]" : "ml-14"
         }`}
       >
