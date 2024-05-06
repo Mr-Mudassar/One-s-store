@@ -34,12 +34,10 @@ const Navbar = () => {
 
   }, []);
 
-  console.log(appThemeColor)
-
 
   return (
     <div
-      className={`bg-theme-primaryBg w-full py-3 px-8 fixed top-0 ${
+      className={`bg-theme-primaryBg w-full py-3 px-8 fixed top-0 transition-all duration-300 ease-in-out ${
         toggleSidebar ? "pl-72" : "pl-20"
       }`}
     >
@@ -50,7 +48,7 @@ const Navbar = () => {
           placeholder="Search"
         />
 
-        <div className="flex cu" onClick={() => setUserDetailsModel(toggle => !toggle) }>
+        <div className="flex cursor-pointer" onClick={() => setUserDetailsModel(toggle => !toggle) }>
           <p className="text-center mx-2 my-auto text-theme-primary ">
             Welcome <b>Mudassar!</b>
           </p>
@@ -62,7 +60,7 @@ const Navbar = () => {
         {/* Modal  */}
 
         {userDetailsModel && (
-          <div className="absolute right-14 top-16 px-4 py-4 bg-theme-primaryBg rounded-xl w-64 shadow-lg z-50">
+          <div className="absolute right-14 top-16 px-4 py-4 bg-theme-primaryBg rounded-xl w-64 shadow-lg ">
             {/* user name and image  */}
             <div className="flex gap-2">
               <span className="text-center my-auto">
