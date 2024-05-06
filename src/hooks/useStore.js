@@ -7,7 +7,7 @@ const useStore = create(
       toggleSidebar: true,
       setToggleSidebar: (toggle) => set({ toggleSidebar: toggle }),
    
-      appMode: 'light',
+      appMode: '',
       setAppMode: (theme) => set({ appMode: theme }),
 
       appThemeColor: "redish",

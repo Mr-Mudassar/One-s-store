@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import ThemesData from "../data/themeColorsData.json";
 
 //  importing icons
-import { MdSunny } from "react-icons/md";
-import { FaMoon } from "react-icons/fa";
-
 import { FiSun } from "react-icons/fi";
 import { FaRegMoon } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -21,19 +18,24 @@ const Navbar = () => {
   const setAppMode = useStore((state) => state.setAppMode);
 
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
+  const appThemeColor = useStore((state) => state.appThemeColor);
 
   const [userDetailsModel, setUserDetailsModel] = useState(false);
 
   // Check the system default theme and apply on app
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    if (appMode === "" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
       document.documentElement.classList.add("dark");
       setAppMode("dark");
-    } else {
+    } else if(appMode !== "") {
       document.documentElement.classList.remove("dark");
       setAppMode("light");
     }
+
   }, []);
+
+  console.log(appThemeColor)
+
 
   return (
     <div
@@ -48,8 +50,8 @@ const Navbar = () => {
           placeholder="Search"
         />
 
-        <div className="flex cursor-pointer" onClick={() => setUserDetailsModel(toggle => !toggle) }>
-          <p className="text-center mx-2 my-auto text-theme-primary">
+        <div className="flex cu" onClick={() => setUserDetailsModel(toggle => !toggle) }>
+          <p className="text-center mx-2 my-auto text-theme-primary ">
             Welcome <b>Mudassar!</b>
           </p>
           <div className="m-auto rounded-full overflow-hidden p-1">
@@ -60,7 +62,7 @@ const Navbar = () => {
         {/* Modal  */}
 
         {userDetailsModel && (
-          <div className="absolute right-14 top-16 px-4 py-4 bg-theme-primaryBg rounded-xl w-64 shadow-lg">
+          <div className="absolute right-14 top-16 px-4 py-4 bg-theme-primaryBg rounded-xl w-64 shadow-lg z-50">
             {/* user name and image  */}
             <div className="flex gap-2">
               <span className="text-center my-auto">
