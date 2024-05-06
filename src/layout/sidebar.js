@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useStore from "../hooks/useStore";
 import { Link } from "react-router-dom";
-
-
 
 // Icons import
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
@@ -13,24 +11,61 @@ import {
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
 
-
 const Sidebar = () => {
   const toggleSidebar = useStore((state) => state.toggleSidebar);
   const setToggleSidebar = useStore((state) => state.setToggleSidebar);
 
-  return (
+  const [width, setWidth] = useState("");
 
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    });
+    CloseSidebarOnSmallDevices();
+  }, []);
+
+  const CloseSidebarOnSmallDevices = () => {
+    if (window.innerWidth < 620) {
+      setToggleSidebar(false);
+    }
+  };
+
+  //  Links on sidebar
+  const RoutesData = [
+    {
+      name: "Dashboard",
+      path: "/",
+      icon: (
+        <MdOutlineDashboardCustomize className="text-2xl text-center my-auto" />
+      ),
+    },
+    {
+      name: "Stores",
+      path: "/stores",
+      icon: <LuStore className="text-2xl text-center my-auto" />,
+    },
+    {
+      name: "Gifts",
+      path: "/gifts",
+      icon: <IoGiftOutline className="text-2xl text-center my-auto" />,
+    },
+  ];
+
+  return (
     <div
-      className={`${toggleSidebar ? "w-64" : "w-14"} h-screen bg-theme-primaryBg fixed top-0 transition-all duration-300 ease-out`}
+      className={`${
+        toggleSidebar ? "w-64" : "w-14"
+      } h-full bg-theme-primaryBg absolute sm:fixed top-0 transition-all duration-300 ease-out`}
     >
       {/* First line of sidebar including toggle button*/}
       <div className="py-2 my-2 flex justify-around items-center">
-
         {toggleSidebar && (
           <>
             <LuStore className="bg-theme-btnBg text-4xl my-auto text-white p-2 rounded" />
 
-            <h1 className="text-theme-primary font-bold text-2xl">One's Store</h1>
+            <h1 className="text-theme-primary font-bold text-2xl">
+              One's Store
+            </h1>
           </>
         )}
 
@@ -49,24 +84,17 @@ const Sidebar = () => {
 
       <div className="border border-dashed border-theme-primaryBorder mx-2"></div>
 
-      <Link to={"/"} className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer " >
-        <MdOutlineDashboardCustomize className="text-2xl text-center my-auto" />
-        {toggleSidebar && <p className="px-3 font-semibold"> Dashboard</p>}
-      </Link>
-
-      <Link to={"/stores"} className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer">
-        <LuStore  className="text-2xl text-center my-auto" />
-        {toggleSidebar && <p className="px-3 font-semibold"> Stores</p>}
-      </Link>
-
-      <Link to={"/orders"} className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer ">
-        <IoGiftOutline className="text-2xl text-center my-auto" />
-        {toggleSidebar && <p className="px-3 font-semibold"> Orders</p>}
-      </Link>
-
-      
+      {RoutesData.map((item) => (
+        <Link
+          key={item.name}
+          to={item.path}
+          className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
+        >
+          {item.icon}
+          {toggleSidebar && <p className="px-3 font-semibold"> {item.name}</p>}
+        </Link>
+      ))}
     </div>
- 
   );
 };
 

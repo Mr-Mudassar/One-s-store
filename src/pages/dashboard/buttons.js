@@ -2,7 +2,7 @@ import React from "react";
 
 const Buttons = () => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between gap-2">
       <button className="bg-theme-btnBg p-2 rounded-md text-theme-btnColor text-sm font-semibold">
         Order now
       </button>

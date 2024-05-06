@@ -11,7 +11,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineSettings } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 
-const Navbar = () => {
+const Navbar = ({userDetailsModel, setUserDetailsModel}) => {
   const toggleSidebar = useStore((state) => state.toggleSidebar);
 
   const appMode = useStore((state) => state.appMode);
@@ -20,25 +20,42 @@ const Navbar = () => {
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
   const appThemeColor = useStore((state) => state.appThemeColor);
 
-  const [userDetailsModel, setUserDetailsModel] = useState(false);
-
   // Check the system default theme and apply on app
   useEffect(() => {
-    if (appMode === "" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    if (
+      appMode === "" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
       document.documentElement.classList.add("dark");
       setAppMode("dark");
-    } else if(appMode !== "") {
+    } else if (appMode !== "") {
       document.documentElement.classList.remove("dark");
       setAppMode("light");
     }
-
   }, []);
 
+  const Links = [
+    {
+      name: "Profile",
+      path: "/",
+      icon: <FaRegUserCircle className="text-xl text-center my-auto" />,
+    },
+    {
+      name: "Settings",
+      path: "/",
+      icon: <MdOutlineSettings className="text-xl text-center my-auto" />,
+    },
+    {
+      name: "Log out",
+      path: "/",
+      icon: <HiOutlineLogout className="text-xl text-center my-auto" />,
+    },
+  ];
 
   return (
     <div
-      className={`bg-theme-primaryBg w-full py-3 px-8 fixed top-0 transition-all duration-300 ease-in-out ${
-        toggleSidebar ? "pl-72" : "pl-20"
+      className={`bg-theme-primaryBg !w-full py-3 px-2 sm:px-8  absolute sm:fixed top-0 transition-all duration-300 ease-in-out pl-16 ${
+        toggleSidebar ? "md:pl-72" : "sm:pl-24"
       }`}
     >
       <div className="flex justify-between">
@@ -48,19 +65,24 @@ const Navbar = () => {
           placeholder="Search"
         />
 
-        <div className="flex cursor-pointer" onClick={() => setUserDetailsModel(toggle => !toggle) }>
-          <p className="text-center mx-2 my-auto text-theme-primary ">
+        <div
+          className="flex cursor-pointer"
+          onClick={() => setUserDetailsModel((toggle) => !toggle)}
+        >
+          <p className="text-center mx-2 my-auto text-theme-primary hidden sm:block">
             Welcome <b>Mudassar!</b>
           </p>
-          <div className="m-auto rounded-full overflow-hidden p-1">
-            <img src={UserImage} alt="user-profile" width={30} />
-          </div>
+          <img
+            src={UserImage}
+            alt="user-profile"
+            className="rounded-full w-10 h-10 z-30"
+          />
         </div>
 
         {/* Modal  */}
 
         {userDetailsModel && (
-          <div className="absolute right-14 top-16 px-4 py-4 bg-theme-primaryBg rounded-xl w-64 shadow-lg ">
+          <div className="absolute right-6 md:right-14 top-16 px-4 py-4 bg-theme-primaryBg rounded-xl w-64 shadow-lg z-50">
             {/* user name and image  */}
             <div className="flex gap-2">
               <span className="text-center my-auto">
@@ -83,35 +105,17 @@ const Navbar = () => {
             <div className="border border-dashed border-theme-primaryBorder mt-4"></div>
 
             {/* Links  */}
-            <Link
-              to={"/"}
-              className="flex text-theme-secondary my-3 mx-2 rounded-md py-2 px-3 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
-            >
-              <FaRegUserCircle className="text-xl text-center my-auto" />
-              {toggleSidebar && (
-                <p className="px-3 font-semibold text-sm"> Profile</p>
-              )}
-            </Link>
-
-            <Link
-              to={"/"}
-              className="flex text-theme-secondary my-3 mx-2 rounded-md py-2 px-3 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
-            >
-              <MdOutlineSettings className="text-xl text-center my-auto" />
-              {toggleSidebar && (
-                <p className="px-3 font-semibold text-sm"> Settings</p>
-              )}
-            </Link>
-
-            <Link
-              to={"/"}
-              className="flex text-theme-secondary my-3 mx-2 rounded-md py-2 px-3 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
-            >
-              <HiOutlineLogout className="text-xl text-center my-auto" />
-              {toggleSidebar && (
-                <p className="px-3 font-semibold text-sm"> Log out</p>
-              )}
-            </Link>
+            {Links.map((item) => (
+              <Link
+                key={item.name}
+                onClick={() => setUserDetailsModel((toggle) => !toggle)}
+                to={item.path}
+                className="flex text-theme-secondary my-3 mx-2 rounded-md py-2 px-3 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
+              >
+                {item.icon}
+                <p className="px-3 font-semibold text-sm"> {item.name}</p>
+              </Link>
+            ))}
             {/* Links ended */}
 
             <div className="border border-dashed border-theme-primaryBorder mt-4"></div>

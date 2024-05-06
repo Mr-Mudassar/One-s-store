@@ -11,7 +11,7 @@ const Dashboard = () => {
           <p className="text-sm font-semibold text-theme-tertiary">Global view</p>
         </div>
 
-        <div className="my-auto space-x-4">
+        <div className="flex gap-4">
           <button className="bg-theme-btnBg p-3  rounded-md text-theme-btnColor text-sm font-semibold">
             More Details
           </button>
