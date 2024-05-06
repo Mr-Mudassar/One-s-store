@@ -4,14 +4,14 @@ import Buttons from "./buttons";
 
 const MainCard = () => {
   return (
-    <div className="bg-theme-primaryBg grid grid-cols-1 sm:grid-cols-2 justify-around p-6 gap-6 rounded-lg col-span-1 md:col-span-2 ">
+    <div className="bg-theme-primaryBg grid grid-cols-1 sm:grid-cols-2 justify-around p-6 gap-6 rounded-lg col-span-1 sm:col-span-2 ">
         <img
           src="https://th.bing.com/th/id/OIP.lJYQUzKQE7h4AfM-Du5UdAAAAA?w=400&h=461&rs=1&pid=ImgDetMain"
           alt="product"
-          className="rounded-md object-cover w-full h-[200px] sm:h-[350px]" 
+          className="rounded-md object-cover w-full h-[200px] sm:h-[360px]" 
         />
 
-      <div className="space-y-2 h-full">
+      <div className="grid content-between">
         {/* Main heading and Product ID */}
         <p className="text-theme-tertiary text-sm font-semibold">
           Prduct ID: 00005450{" "}
@@ -56,7 +56,7 @@ const MainCard = () => {
           </div>
         </div>
 
-        <div className="border border-dashed border-theme-primaryBorder rounded-md text-center space-y-3 py-2">
+        <div className="border border-dashed border-theme-primaryBorder rounded-md text-center space-y-3 py-2 mb-4">
           <p className="text-theme-tertiary text-sm">Total Sale</p>
           <p className="text-theme-primary text-3xl font-semibold mb-2 ">34.42$</p>
           <p className="text-theme-tertiary text-sm">Stock availability</p>

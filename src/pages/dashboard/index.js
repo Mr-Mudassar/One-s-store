@@ -12,12 +12,12 @@ const Dashboard = () => {
         </div>
 
         <div className="my-auto space-x-4">
-          <buttton className="bg-theme-btnBg p-3  rounded-md text-theme-btnColor text-sm font-semibold">
+          <button className="bg-theme-btnBg p-3  rounded-md text-theme-btnColor text-sm font-semibold">
             More Details
-          </buttton>
-          <buttton className="bg-gray-200 text-theme-tertiary p-3 rounded-md text-sm font-semibold">
+          </button>
+          <button className="bg-gray-200 text-theme-tertiary p-3 rounded-md text-sm font-semibold">
             View Details
-          </buttton>
+          </button>
         </div>
       </div>
 

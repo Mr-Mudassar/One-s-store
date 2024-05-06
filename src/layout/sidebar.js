@@ -1,13 +1,17 @@
 import React from "react";
 import useStore from "../hooks/useStore";
+import { Link } from "react-router-dom";
+
+
+
 // Icons import
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { LuStore } from "react-icons/lu";
+import { IoGiftOutline } from "react-icons/io5";
 import {
   MdOutlineDashboardCustomize,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
-import { IoGiftOutline } from "react-icons/io5";
 
 
 const Sidebar = () => {
@@ -15,7 +19,8 @@ const Sidebar = () => {
   const setToggleSidebar = useStore((state) => state.setToggleSidebar);
 
   return (
-    <aside
+
+    <div
       className={`${toggleSidebar ? "w-64" : "w-14"} h-screen bg-theme-primaryBg fixed top-0`}
     >
       {/* First line of sidebar including toggle button*/}
@@ -44,23 +49,24 @@ const Sidebar = () => {
 
       <div className="border border-dashed border-theme-primaryBorder mx-2"></div>
 
-      <div className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer ">
+      <Link to={"/"} className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer " >
         <MdOutlineDashboardCustomize className="text-2xl text-center my-auto" />
         {toggleSidebar && <p className="px-3 font-semibold"> Dashboard</p>}
-      </div>
+      </Link>
 
-      <div className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer ">
+      <Link to={"/stores"} className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer">
         <LuStore  className="text-2xl text-center my-auto" />
         {toggleSidebar && <p className="px-3 font-semibold"> Stores</p>}
-      </div>
+      </Link>
 
-      <div className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer ">
+      <Link to={"/orders"} className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer ">
         <IoGiftOutline className="text-2xl text-center my-auto" />
         {toggleSidebar && <p className="px-3 font-semibold"> Orders</p>}
-      </div>
+      </Link>
 
       
-    </aside>
+    </div>
+ 
   );
 };
 

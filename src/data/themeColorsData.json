@@ -1,0 +1,34 @@
+{
+  "themeColors": [
+    {
+      "name": "Red",
+      "colorValue": "redish",
+      "color": "#dc2626"
+    },
+    {
+      "name": "Blue",
+      "colorValue": "bluish",
+      "color": "#2563eb"
+    },
+    {
+      "name": "Orange",
+      "colorValue": "orangish",
+      "color": "#f97316"
+    },
+    {
+      "name": "Green",
+      "colorValue": "greenish",
+      "color": "#059669"
+    },
+    {
+      "name": "Yellow",
+      "colorValue": "yellowish",
+      "color": "#f59e0b"
+    },
+    {
+      "name": "Violet",
+      "colorValue": "violetish",
+      "color": "#7c3aed"
+    }
+  ]
+}

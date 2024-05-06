@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { MdLogin } from "react-icons/md";
 
 import LoginImg from "../../assests/login-page-illustaration.png"
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -57,13 +58,13 @@ const Login = () => {
                                 </button>
                                 <p className="mt-6 text-xs text-theme-tertiary text-center ">
                                     I agree to {" "}
-                                    <a href="#" className="border-b border-theme-primaryBorder border-dotted text-theme-btnBgText">
+                                    <Link to="#" className="border-b border-theme-primaryBorder border-dotted text-theme-btnBgText">
                                         Terms of Service {" "}
-                                    </a>
+                                    </Link>
                                     and its
-                                    <a href="#" className="border-b border-theme-primaryBorder border-dotted text-theme-btnBgText">
+                                    <Link to="#" className="border-b border-theme-primaryBorder border-dotted text-theme-btnBgText">
                                         {" "} Privacy Policy
-                                    </a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>

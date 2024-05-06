@@ -4,30 +4,30 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import useStore from "./hooks/useStore";
 import { useEffect } from "react";
-import Login from "./pages/auth/login"
+import Login from "./pages/auth/login";
+import Stores from "./pages/stores";
 
 function App() {
   const appThemeColor = useStore((state) => state.appThemeColor);
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
 
   useEffect(() => {
-    setAppThemeColor("redish")
-  }, [])
+    setAppThemeColor("redish");
+  }, []);
 
   return (
     <div className={`bg-theme-secondaryBg ${appThemeColor}`}>
       {/* Main layout */}
-      <Layout>
-
         <Router>
+      <Layout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<div>Register</div>} />
+            <Route path="/stores" element={<Stores />} />
             <Route path="*" element={<div>error;</div>} />
           </Routes>
-        </Router>
       </Layout>
+        </Router>
     </div>
   );
 }
