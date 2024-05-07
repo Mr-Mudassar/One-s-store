@@ -47,7 +47,7 @@ const Navbar = ({userDetailsModel, setUserDetailsModel}) => {
     },
     {
       name: "Log out",
-      path: "/",
+      path: "/login",
       icon: <HiOutlineLogout className="text-xl text-center my-auto" />,
     },
   ];
@@ -131,7 +131,7 @@ const Navbar = ({userDetailsModel, setUserDetailsModel}) => {
                   className="px-3 py-1 rounded-md flex text-sm text-theme-tertiary font-semibold border border-gray-200 hover:bg-theme-secondaryBg "
                 >
                   <div
-                    className={`rounded-full bg-[${items.color}] text-[${items.color}] mr-1`}
+                    className={`rounded-full ${items.color} ${items.text} mr-1`}
                   >
                     ......
                   </div>

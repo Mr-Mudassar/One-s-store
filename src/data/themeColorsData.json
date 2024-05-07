@@ -3,32 +3,38 @@
     {
       "name": "Red",
       "colorValue": "redish",
-      "color": "#dc2626"
+      "color": "bg-red-600",
+      "text" : "text-red-600"
     },
     {
       "name": "Blue",
       "colorValue": "bluish",
-      "color": "#2563eb"
+      "color": "bg-blue-600",
+      "text" : "text-blue-600"
     },
     {
       "name": "Orange",
       "colorValue": "orangish",
-      "color": "#f97316"
+      "color": "bg-orange-600",
+      "text" : "text-orange-600"
     },
     {
       "name": "Green",
       "colorValue": "greenish",
-      "color": "#059669"
+      "color": "bg-green-600",
+      "text" : "text-green-600"
     },
     {
       "name": "Yellow",
       "colorValue": "yellowish",
-      "color": "#f59e0b"
+      "color": "bg-yellow-500",
+      "text" : "text-yellow-500"
     },
     {
       "name": "Violet",
       "colorValue": "violetish",
-      "color": "#7c3aed"
+      "color": "bg-violet-600",
+      "text" : "text-violet-600"
     }
   ]
 }

@@ -37,7 +37,7 @@ const DataTableComponent = () => {
     rows: {
       style: {
         color: "#223336",
-        backgroundColor: "theme.primaryBg", // Use CSS variable for background color
+        // backgroundColor: `${theme.primaryBg}`, // Use CSS variable for background color
       },
     },
     headCells: {
@@ -68,6 +68,7 @@ const DataTableComponent = () => {
         expandableRows
         expandableRowsComponent={ExpandedComponent}
         highlightOnHover
+        className="bg-theme.primaryBg"
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../hooks/useStore";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Icons import
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
@@ -12,6 +12,9 @@ import {
 } from "react-icons/md";
 
 const Sidebar = () => {
+
+  const location = useLocation();
+
   const toggleSidebar = useStore((state) => state.toggleSidebar);
   const setToggleSidebar = useStore((state) => state.setToggleSidebar);
 
@@ -88,7 +91,7 @@ const Sidebar = () => {
         <Link
           key={item.name}
           to={item.path}
-          className="flex text-theme-secondary my-3 mx-2 rounded-md p-2 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
+          className={`flex my-3 mx-2 rounded-md p-2 hover:cursor-pointer text-theme-secondary ${location.pathname === item.path ? "bg-theme-secondaryBg !text-theme-btnBgText" : ""} hover:bg-theme-secondaryBg hover:text-theme-primary `}
         >
           {item.icon}
           {toggleSidebar && <p className="px-3 font-semibold"> {item.name}</p>}
