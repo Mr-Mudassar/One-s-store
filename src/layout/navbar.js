@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useStore from "../hooks/useStore";
 import UserImage from "../assests/navbar/user-img.png";
 import { Link } from "react-router-dom";
@@ -11,28 +11,36 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineSettings } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 
-const Navbar = ({userDetailsModel, setUserDetailsModel}) => {
+const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
   const toggleSidebar = useStore((state) => state.toggleSidebar);
 
   const appMode = useStore((state) => state.appMode);
   const setAppMode = useStore((state) => state.setAppMode);
 
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
-  const appThemeColor = useStore((state) => state.appThemeColor);
 
   // Check the system default theme and apply on app
   useEffect(() => {
-    if (
-      appMode === "" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      document.documentElement.classList.add("dark");
-      setAppMode("dark");
-    } else if (appMode !== "") {
-      document.documentElement.classList.remove("dark");
-      setAppMode("light");
-    }
+    CheckTheme();
   }, []);
+
+  const CheckTheme = () => {
+    if (appMode === "") {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.classList.add("dark");
+        setAppMode("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        setAppMode("light");
+      }
+    } else if (appMode !== "" && appMode === 'dark') {
+      document.documentElement.classList.add("dark");
+      setAppMode("dark")
+    } else if (appMode !== "" && appMode === 'light') {
+      document.documentElement.classList.remove("dark");
+      setAppMode("light")
+    }
+  };
 
   const Links = [
     {

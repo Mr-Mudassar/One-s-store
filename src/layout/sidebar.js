@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useStore from "../hooks/useStore";
 import { Link, useLocation } from "react-router-dom";
 
@@ -18,14 +18,10 @@ const Sidebar = () => {
   const toggleSidebar = useStore((state) => state.toggleSidebar);
   const setToggleSidebar = useStore((state) => state.setToggleSidebar);
 
-  const [width, setWidth] = useState("");
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setWidth(window.innerWidth);
-    });
     CloseSidebarOnSmallDevices();
-  }, []);
+  });
 
   const CloseSidebarOnSmallDevices = () => {
     if (window.innerWidth < 620) {
