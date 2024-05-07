@@ -1,5 +1,5 @@
 import React from "react";
-import UserImage from "../../assests/navbar/user-img.png";
+import UserImage from "../../../assests/navbar/user-img.png";
 import Buttons from "./buttons";
 
 const MainCard = () => {

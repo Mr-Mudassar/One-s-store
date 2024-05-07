@@ -1,6 +1,6 @@
 import React from "react";
-import MainCard from "./main-card";
-import SmallCard from "./small-card";
+import MainCard from "./components/main-card";
+import SmallCard from "./components/small-card";
 
 const Dashboard = () => {
   return (

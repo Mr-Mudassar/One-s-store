@@ -1,5 +1,5 @@
 import React from "react";
-import DataTableComponent from "./dataTable";
+import DataTableComponent from "./components/dataTable";
 
 import { MdOutlineAddHome } from "react-icons/md";
 
