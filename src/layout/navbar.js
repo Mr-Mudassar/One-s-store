@@ -17,12 +17,17 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
   const appMode = useStore((state) => state.appMode);
   const setAppMode = useStore((state) => state.setAppMode);
 
+  const appThemeColor = useStore((state) => state.appThemeColor);
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
 
   // Check the system default theme and apply on app
   useEffect(() => {
     CheckTheme();
-  }, []);
+    if (appThemeColor === "") {
+      setAppThemeColor("redish");
+    }
+    document.documentElement.classList.add(appThemeColor);
+  }, [appThemeColor]);
 
   const CheckTheme = () => {
     if (appMode === "") {
@@ -33,12 +38,12 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
         document.documentElement.classList.remove("dark");
         setAppMode("light");
       }
-    } else if (appMode !== "" && appMode === 'dark') {
+    } else if (appMode !== "" && appMode === "dark") {
       document.documentElement.classList.add("dark");
-      setAppMode("dark")
-    } else if (appMode !== "" && appMode === 'light') {
+      setAppMode("dark");
+    } else if (appMode !== "" && appMode === "light") {
       document.documentElement.classList.remove("dark");
-      setAppMode("light")
+      setAppMode("light");
     }
   };
 
@@ -135,7 +140,20 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
               {ThemesData.themeColors.map((items) => (
                 <button
                   key={items.name}
-                  onClick={() => setAppThemeColor(items.colorValue)}
+                  disabled={appThemeColor === items.colorValue}
+                  onClick={() => {
+                    if (appThemeColor !== "") {
+                      document.documentElement.classList.remove(
+                        "redish",
+                        "bluish",
+                        "yellowish",
+                        "orangish",
+                        "greenish",
+                        "violetish"
+                      );
+                    }
+                    setAppThemeColor(items.colorValue);
+                  }}
                   className="px-3 py-1 rounded-md flex text-sm text-theme-tertiary font-semibold border border-gray-200 hover:bg-theme-secondaryBg "
                 >
                   <div
