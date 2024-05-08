@@ -12,6 +12,9 @@ const useStore = create(
 
       appThemeColor: "redish",
       setAppThemeColor: (color) => set({ appThemeColor: color }),
+
+      isLogin: "",
+      setIsLogin: (data) => set({isLogin: data}),
     }),
     {
       name: 'zustand-state', 

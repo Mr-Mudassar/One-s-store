@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import useStore from "../hooks/useStore";
 import UserImage from "../assests/navbar/user-img.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ThemesData from "../data/themeColorsData.json";
+import Cookies from "js-cookie";
 
 //  importing icons
 import { FiSun } from "react-icons/fi";
@@ -20,48 +21,34 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
   const appThemeColor = useStore((state) => state.appThemeColor);
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
 
-  // Check the system default theme and apply on app
-  useEffect(() => {
-    CheckTheme();
-    if (appThemeColor === "") {
-      setAppThemeColor("redish");
-    }
-    document.documentElement.classList.add(appThemeColor);
-  }, [appThemeColor]);
-
-  const CheckTheme = () => {
-    if (appMode === "") {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.classList.add("dark");
-        setAppMode("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        setAppMode("light");
-      }
-    } else if (appMode !== "" && appMode === "dark") {
-      document.documentElement.classList.add("dark");
-      setAppMode("dark");
-    } else if (appMode !== "" && appMode === "light") {
-      document.documentElement.classList.remove("dark");
-      setAppMode("light");
-    }
-  };
+  const Navigate = useNavigate()
 
   const Links = [
     {
       name: "Profile",
       path: "/",
       icon: <FaRegUserCircle className="text-xl text-center my-auto" />,
+      funq: () => {
+        setUserDetailsModel((toggle) => !toggle);
+      },
     },
     {
       name: "Settings",
       path: "/",
       icon: <MdOutlineSettings className="text-xl text-center my-auto" />,
+      func: () => {
+        setUserDetailsModel((toggle) => !toggle);
+      },
     },
     {
       name: "Log out",
       path: "/login",
       icon: <HiOutlineLogout className="text-xl text-center my-auto" />,
+      func: () => {
+        setUserDetailsModel((toggle) => !toggle);
+        Cookies.remove("token");
+        Navigate("/auth/login")
+      },
     },
   ];
 
@@ -119,15 +106,14 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
 
             {/* Links  */}
             {Links.map((item) => (
-              <Link
+              <div
                 key={item.name}
-                onClick={() => setUserDetailsModel((toggle) => !toggle)}
-                to={item.path}
+                onClick={item.func}
                 className="flex text-theme-secondary my-3 mx-2 rounded-md py-2 px-3 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
               >
                 {item.icon}
                 <p className="px-3 font-semibold text-sm"> {item.name}</p>
-              </Link>
+              </div>
             ))}
             {/* Links ended */}
 
