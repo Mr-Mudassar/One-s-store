@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useStore from "../hooks/useStore";
 import UserImage from "../assests/navbar/user-img.png";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,6 @@ import { HiOutlineLogout } from "react-icons/hi";
 const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
   const toggleSidebar = useStore((state) => state.toggleSidebar);
 
-  const appMode = useStore((state) => state.appMode);
   const setAppMode = useStore((state) => state.setAppMode);
 
   const appThemeColor = useStore((state) => state.appThemeColor);
