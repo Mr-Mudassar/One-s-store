@@ -59,7 +59,7 @@ const Stores = () => {
             className="flex bg-theme-btnBg p-3  rounded-md text-theme-btnColor text-sm font-semibold"
           >
             <MdOutlineAddHome className="text-xl text-center my-auto mr-2" />
-            Add Store
+            Add Store 
           </button>
         </div>
       </div>
