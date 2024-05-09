@@ -71,7 +71,7 @@ const Sidebar = () => {
         {/* Toggle sidebar button  */}
         <div
           onClick={() => setToggleSidebar(!toggleSidebar)}
-          className="my-auto"
+          className="my-auto cursor-pointer"
         >
           {toggleSidebar ? (
             <MdKeyboardDoubleArrowLeft className="text-4xl my-auto pt-2 text-theme-tertiary" />

@@ -14,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState();
   const setIsLogin = useStore((state) => state.setIsLogin);
 
-  const baseUrl = 'https://2308-182-180-164-20.ngrok-free.app/api'
+  const baseUrl = 'https://796e-182-180-164-20.ngrok-free.app/api'
   const Navigate = useNavigate()
 
   const handleLogin = async (e) => {

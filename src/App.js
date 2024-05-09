@@ -8,6 +8,7 @@ import Login from "./pages/auth/login";
 import Stores from "./pages/stores";
 import PrivateRoutes from "./routes/privateRoutes";
 import PublicRoutes from "./routes/publicRoutes";
+import Callback from "./pages/callback";
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="/" element={<PrivateRoutes />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="stores" element={<Stores />} />
+            <Route path="callback" element={<Callback />} />
           </Route>
         </Routes>
       </Router>
