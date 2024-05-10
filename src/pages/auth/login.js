@@ -14,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState();
   const setIsLogin = useStore((state) => state.setIsLogin);
 
-  const baseUrl = 'https://796e-182-180-164-20.ngrok-free.app/api'
+  const baseUrl = process.env.REACT_APP_API_BASE_URL
   const Navigate = useNavigate()
 
   const handleLogin = async (e) => {
@@ -31,13 +31,13 @@ const Login = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      toast.success(response.data.message)
+      toast.success(response?.data?.message)
       setIsLogin(true)
-      Cookies.set('token', response.data.data.jwToken)
+      Cookies.set('token', response?.data?.data?.jwToken)
       Navigate("/")
 
     } catch (error) {
-      toast.error(error.response.data.Message)
+      toast.error(error?.response?.data?.Message)
     }
   };
 
@@ -84,6 +84,7 @@ const Login = () => {
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                   <input
                     className="w-full px-8 py-4 rounded-lg font-medium bg-theme-primaryBg border border-theme-primaryBorder placeholder-theme-tertiary text-sm focus:outline-none focus:border-gray-400 focus:bg-theme-secondaryBg text-theme-primary mt-5"
@@ -92,6 +93,7 @@ const Login = () => {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                   <button
                     type="submit"

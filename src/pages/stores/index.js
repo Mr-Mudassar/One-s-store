@@ -1,11 +1,10 @@
-import React from "react";
-import DataTableComponent from "./components/dataTable";
+import React, { useEffect, useState } from "react";
+import DataTableComponent from "../../components/dataTable";
 import { MdOutlineAddHome } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import { Link } from "react-router-dom";
 
 const Stores = () => {
   const token = Cookies.get("token");
@@ -13,15 +12,28 @@ const Stores = () => {
   const UserId = "08dc169c-2c94-4847-8d34-3b38509863bd";
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-  const AuthenticToken = "54565454344342434343";
+  const [allStoresData, setAllStoresData] = useState([]);
 
-  const AddStores = async () => {
+  //  Daraz authorization popup start here
+  const openPopup = () => {
+    const clientId = "501142";
+    const redirectUri = "https://member.eskout.com/daraz/callback";
+    const url = `https://api.daraz.pk/oauth/authorize?response_type=code&force_auth=true&redirect_uri=${redirectUri}&client_id=${clientId}`; // Replace with your authentication URL
+    window.open(url, "/pop.html", "Popup Test", "width=auto, height=auto");
+  };
+  //  Daraz authorization popup end here
+
+  // Get all stores data start here
+  useEffect(() => {
+    getStoresData();
+  }, []);
+
+  const getStoresData = async () => {
     const formData = new FormData();
     formData.append("UserId", UserId);
-    formData.append("Code", AuthenticToken);
     try {
       const response = await axios.post(
-        `${baseUrl}/Store/addstoredetail`,
+        `${baseUrl}/Store/storedetail`,
         formData,
         {
           headers: {
@@ -29,19 +41,36 @@ const Stores = () => {
           },
         }
       );
-      console.log(response.data.data);
+      setAllStoresData(response?.data?.data);
     } catch (error) {
       toast.error(error?.response?.data?.Message);
-      console.log(error?.response?.data?.Message);
     }
   };
+  // Get all stores data end here
 
-  const openPopup = () => {
-    const clientId = "501142";
-    const redirectUri = "https://member.eskout.com/daraz/callback";
-    const url = `https://api.daraz.pk/oauth/authorize?response_type=code&force_auth=true&redirect_uri=${redirectUri}&client_id=${clientId}`; // Replace with your authentication URL
-    window.open(url, "/pop.html", "Popup Test", "width=auto, height=auto");
-  };
+  // Table heading array
+  const tableHeadings = [
+    {
+      name: "Store Name",
+      selector: (row) => row.storeName,
+      sortable: true,
+    },
+    {
+      name: "Email",
+      selector: (row) => row.storeEmail,
+      sortable: true,
+    },
+    {
+      name: "Location",
+      selector: (row) => row.storeLocation,
+      sortable: true,
+    },
+    {
+      name: "Status",
+      selector: (row) => row.storeStatus,
+      sortable: true,
+    },
+  ];
 
   return (
     <div>
@@ -59,12 +88,16 @@ const Stores = () => {
             className="flex bg-theme-btnBg p-3  rounded-md text-theme-btnColor text-sm font-semibold"
           >
             <MdOutlineAddHome className="text-xl text-center my-auto mr-2" />
-            Add Store 
+            Add Store
           </button>
         </div>
       </div>
 
-      <DataTableComponent />
+      <DataTableComponent
+        allData={allStoresData}
+        tableHeadings={tableHeadings}
+        selectableRows={false}
+      />
     </div>
   );
 };

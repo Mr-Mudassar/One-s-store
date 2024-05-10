@@ -9,9 +9,9 @@ import Stores from "./pages/stores";
 import PrivateRoutes from "./routes/privateRoutes";
 import PublicRoutes from "./routes/publicRoutes";
 import Callback from "./pages/callback";
+import Orders from "./pages/orders";
 
 function App() {
-
   const appThemeColor = useStore((state) => state.appThemeColor);
   const appMode = useStore((state) => state.appMode);
   const setAppMode = useStore((state) => state.setAppMode);
@@ -44,9 +44,10 @@ function App() {
     <div className={`bg-theme-secondaryBg `}>
       <Router>
         <Routes>
-          {/* Public routes */}
+          {/* Not found (404) route */}
           <Route path="*" element={<div>Not found</div>} />
 
+          {/* Public routes */}
           <Route path="/auth" element={<PublicRoutes />}>
             <Route path="login" element={<Login />} />
           </Route>
@@ -55,6 +56,7 @@ function App() {
           <Route path="/" element={<PrivateRoutes />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="stores" element={<Stores />} />
+            <Route path="orders" element={<Orders />} />
             <Route path="callback" element={<Callback />} />
           </Route>
         </Routes>

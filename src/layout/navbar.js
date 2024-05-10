@@ -53,7 +53,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
 
   return (
     <div
-      className={`bg-theme-primaryBg !w-full py-3 px-2 sm:px-8  absolute sm:fixed top-0 transition-all duration-300 ease-in-out pl-16 ${
+      className={`bg-theme-primaryBg !w-full py-3 px-2 sm:px-8  absolute sm:fixed top-0 transition-all duration-300 ease-in-out pl-16 z-50 ${
         toggleSidebar ? "md:pl-72" : "sm:pl-24"
       }`}
     >
