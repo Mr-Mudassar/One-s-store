@@ -7,15 +7,15 @@ const Dashboard = () => {
     <div className="space-y-4 items-center mx-auto ">
       <div className="flex justify-between m-auto flex-wrap gap-y-4">
         <div>
-          <h5 className="font-semibold text-theme-primary text-xl">Main Dashboard</h5>
+          <h5 className="font-bold text-theme-btnBgText text-xl">DASHBOARD</h5>
           <p className="text-sm font-semibold text-theme-tertiary">Global view</p>
         </div>
 
         <div className="flex gap-4">
-          <button className="bg-theme-btnBg p-3  rounded-md text-theme-btnColor text-sm font-semibold">
+          <button className="bg-theme-btnBg hover:bg-theme-btnColorHover p-3  rounded-md text-theme-btnColor text-sm font-semibold shadow-lg">
             More Details
           </button>
-          <button className="bg-gray-200 text-theme-tertiary p-3 rounded-md text-sm font-semibold">
+          <button className="bg-gray-200 text-theme-tertiary p-3 rounded-md text-sm font-semibold shadow-md hover:bg-slate-300">
             View Details
           </button>
         </div>

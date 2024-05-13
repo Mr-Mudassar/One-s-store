@@ -7,10 +7,10 @@
         --color-text-base: #121212;
         --color-text-secondary: #4b5563;
         --color-text-tertiary: #6b7280;
-        --color-border-accent: #a1a2a5;;
+        --color-border-accent: #a1a2a5;
         --color-bg-primary: #ffffff;
         --color-bg-secondary: #f3f4f6;
-        --color-btn-text: #f3f4f6;
+        --color-btn-text: #f6f8fc;
     }
 
     .dark {
@@ -20,37 +20,44 @@
         --color-border-accent: #74777a;
         --color-bg-primary: #0A0A0A;
         --color-bg-secondary: #221f1f;
-        --color-btn-text: #221f1f;
+        --color-btn-text: #f6f8fc;
     }
 
     .redish {
         --color-btn-background: #dc2626;
         --color-btn-color: #dc2626;
+        --color-btn-hover: #b81313;
     }
 
     .bluish {
-        --color-btn-background: #2563eb;
-        --color-btn-color: #2563eb;
+        --color-btn-background: #5084f5;
+        --color-btn-color: #3a73ee;
+        --color-btn-hover: #356feb;
+
     }
 
     .greenish {
         --color-btn-background: #059669;
         --color-btn-color: #059669;
+        --color-btn-hover: #076b4b;
     }
 
     .orangish {
         --color-btn-background: #f97316;
         --color-btn-color: #f97316;
+        --color-btn-hover: #d6610d;
     }
 
     .yellowish {
         --color-btn-background: #f59e0b;
         --color-btn-color: #f59e0b;
+        --color-btn-hover: #d18503;
     }
 
     .violetish {
-        --color-btn-background: #7c3aed;
-        --color-btn-color: #7c3aed;
+        --color-btn-background: #8e56f0;
+        --color-btn-color: #8e56f0;
+        --color-btn-hover: #5715c9;
     }
 
 }

@@ -4,6 +4,7 @@ import UserImage from "../assests/navbar/user-img.png";
 import { useNavigate } from "react-router-dom";
 import ThemesData from "../data/themeColorsData.json";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 //  importing icons
 import { FiSun } from "react-icons/fi";
@@ -21,6 +22,8 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
 
   const Navigate = useNavigate()
+
+  const UserData = jwtDecode(Cookies.get("token")).email
 
   const Links = [
     {
@@ -53,7 +56,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
 
   return (
     <div
-      className={`bg-theme-primaryBg !w-full py-3 px-2 sm:px-8  absolute sm:fixed top-0 transition-all duration-300 ease-in-out pl-16 z-50 ${
+      className={`shadow-md bg-theme-primaryBg !w-full py-3 px-2 sm:px-8 absolute sm:fixed top-0 transition-all duration-300 ease-in-out pl-16 z-50 ${
         toggleSidebar ? "md:pl-72" : "sm:pl-24"
       }`}
     >
@@ -69,7 +72,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
           onClick={() => setUserDetailsModel((toggle) => !toggle)}
         >
           <p className="text-center mx-2 my-auto text-theme-primary hidden sm:block">
-            Welcome <b>Mudassar!</b>
+            Welcome <b>{UserData}!</b>
           </p>
           <img
             src={UserImage}
@@ -94,9 +97,9 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
               </span>
 
               <span className="text-sm text-theme-secondary overflow-hidden">
-                <b className="text-theme-primary">Mudassar</b>
+                <b className="text-theme-primary">{UserData}</b>
                 <p className="text-theme-tertiary ">
-                  mudassarmuhammad776@gmail.com
+                  {UserData}
                 </p>
               </span>
             </div>

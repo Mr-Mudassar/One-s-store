@@ -18,6 +18,7 @@ module.exports = {
           primaryBg: "var(--color-bg-primary)",
           secondaryBg: "var(--color-bg-secondary)",
           btnBg: "var(--color-btn-background)",
+          btnColorHover: "var(--color-btn-hover)",
         },
       },
       borderColor: {

@@ -76,7 +76,7 @@ const Stores = () => {
     <div>
       <div className="flex justify-between m-auto flex-wrap mb-4">
         <div>
-          <h5 className="font-semibold text-theme-primary text-xl">Stores</h5>
+          <h5 className="font-bold text-theme-btnBgText text-xl">STORES</h5>
           <p className="text-sm font-semibold text-theme-tertiary">
             All your stores shows here
           </p>

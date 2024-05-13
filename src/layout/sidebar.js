@@ -54,7 +54,7 @@ const Sidebar = () => {
     <div
       className={`${
         toggleSidebar ? "w-64" : "w-14"
-      } h-full bg-theme-primaryBg absolute sm:fixed top-0 transition-all duration-300 ease-out z-50`}
+      } h-full bg-theme-primaryBg absolute sm:fixed top-0 transition-all duration-300 ease-out z-50 shadow-lg`}
     >
       {/* First line of sidebar including toggle button*/}
       <div className="py-2 my-2 flex justify-around items-center">
