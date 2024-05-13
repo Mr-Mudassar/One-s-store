@@ -10,6 +10,7 @@ import PrivateRoutes from "./routes/privateRoutes";
 import PublicRoutes from "./routes/publicRoutes";
 import Callback from "./pages/callback";
 import Orders from "./pages/orders";
+import NotFound from "./pages/404";
 
 function App() {
   const appThemeColor = useStore((state) => state.appThemeColor);
@@ -45,7 +46,7 @@ function App() {
       <Router>
         <Routes>
           {/* Not found (404) route */}
-          <Route path="*" element={<div className="flex text-center items-center text-3xl">Not found</div>} />
+          <Route path="*" element={<NotFound/>}/>
 
           {/* Public routes */}
           <Route path="/auth" element={<PublicRoutes />}>
