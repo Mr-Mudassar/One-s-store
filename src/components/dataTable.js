@@ -9,6 +9,7 @@ const DataTableComponent = ({
   selectableRowDisabled,
   ExpandedComponent,
   expandableRows,
+  handleSelectedRowsChange
 }) => {
   const columns = tableHeadings;
   const data = allData;
@@ -31,13 +32,14 @@ const DataTableComponent = ({
         selectableRows={selectableRows}
         expandableRows={expandableRows}
         expandableRowsComponent={ExpandedComponent}
+        customStyles={customStyles}
+        selectableRowDisabled={selectableRowDisabled}
+        onSelectedRowsChange={handleSelectedRowsChange}
         sortable
         pagination
         highlightOnHover
-        responsive
         // striped
-        customStyles={customStyles}
-        selectableRowDisabled={selectableRowDisabled}
+        responsive
       />
     </div>
   );

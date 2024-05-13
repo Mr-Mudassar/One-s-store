@@ -45,7 +45,7 @@ function App() {
       <Router>
         <Routes>
           {/* Not found (404) route */}
-          <Route path="*" element={<div>Not found</div>} />
+          <Route path="*" element={<div className="flex text-center items-center text-3xl">Not found</div>} />
 
           {/* Public routes */}
           <Route path="/auth" element={<PublicRoutes />}>
@@ -59,6 +59,8 @@ function App() {
             <Route path="orders" element={<Orders />} />
             <Route path="callback" element={<Callback />} />
           </Route>
+
+
         </Routes>
       </Router>
     </div>

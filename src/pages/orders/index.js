@@ -65,7 +65,8 @@ const Orders = () => {
 
   //  Disable rows selection logic
   const rowDisabledCriteria = (row) =>
-    row.status == "canceled" || row.status == "delivered";
+    // row.status == "canceled" ||
+    row.status == "delivered";
 
   // Table heading array
   const tableHeadings = [
@@ -131,6 +132,24 @@ const Orders = () => {
     },
   ];
 
+
+  const HandleSelectedRowsChange = (selectedRows) => {
+    const selectedIdsAndOrderNumbers = selectedRows.selectedRows.map((row) => ({
+      id: row.id,
+      orderNumber: row.orderNumber,
+    }));
+
+    const finalArray = [
+      {
+        UserId: UserId,
+      },
+      selectedIdsAndOrderNumbers,
+    ];
+
+    console.log("Selected rows:", finalArray);
+  };
+
+
   return (
     <div>
       <div className="flex justify-between m-auto flex-wrap mb-4">
@@ -149,6 +168,7 @@ const Orders = () => {
         expandableRows={true}
         selectableRowDisabled={rowDisabledCriteria}
         ExpandedComponent={ExpandedComponent}
+        handleSelectedRowsChange={HandleSelectedRowsChange}
       />
     </div>
   );

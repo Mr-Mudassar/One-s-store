@@ -87,7 +87,7 @@ const Sidebar = () => {
         <Link
           key={item.name}
           to={item.path}
-          className={`flex my-3 mx-2 rounded-md p-2 hover:cursor-pointer text-theme-secondary ${location.pathname === item.path ? "bg-theme-secondaryBg !text-theme-btnBgText" : ""} hover:bg-theme-secondaryBg hover:text-theme-primary `}
+          className={`flex my-3 mx-2 rounded-md p-2 hover:cursor-pointer text-theme-secondary ${location.pathname === item.path ? "bg-theme-secondaryBg !text-theme-btnBgText shadow-md" : ""} hover:bg-theme-secondaryBg hover:text-theme-primary`}
         >
           {item.icon}
           {toggleSidebar && <p className="px-3 font-semibold"> {item.name}</p>}
