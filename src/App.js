@@ -3,14 +3,15 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { useEffect } from "react";
 import useStore from "./hooks/useStore";
 
-import Dashboard from "./pages/dashboard";
-import Login from "./pages/auth/login";
-import Stores from "./pages/stores";
 import PrivateRoutes from "./routes/privateRoutes";
 import PublicRoutes from "./routes/publicRoutes";
-import Callback from "./pages/callback";
-import Orders from "./pages/orders";
 import NotFound from "./pages/404";
+import Login from "./pages/auth/login";
+import SignUp from "./pages/auth/signup";
+import Dashboard from "./pages/dashboard";
+import Orders from "./pages/orders";
+import Stores from "./pages/stores";
+import Callback from "./pages/callback";
 
 function App() {
   const appThemeColor = useStore((state) => state.appThemeColor);
@@ -51,6 +52,7 @@ function App() {
           {/* Public routes */}
           <Route path="/auth" element={<PublicRoutes />}>
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
           </Route>
 
           {/* Private routes */}
