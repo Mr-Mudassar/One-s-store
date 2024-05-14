@@ -3,44 +3,54 @@ import { Link, useNavigate } from "react-router-dom";
 import useStore from "../../hooks/useStore";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useFormik } from "formik";
+import { LoginInSchema } from "../../schemas";
 
 import { MdLogin } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import LoginImg from "../../assests/login-illustration.svg";
 import { toast } from "react-toastify";
+import InputField from "../../components/inputField";
 
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const initialValues = {
+    email: "",
+    password: "",
+  };
   const setIsLogin = useStore((state) => state.setIsLogin);
 
+  // Environmental variable import
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
+  // UseNavigate
   const Navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("Email", email);
-    formData.append("Password", password);
+  // Login function and API call on form submit 
+  const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: initialValues,
+    validationSchema: LoginInSchema,
+    onSubmit: async (values) => {
+      const formData = new FormData();
+      formData.append("Email", values.email);
+      formData.append("Password", values.password);
+  
+      try {
+        const response = await axios.post(`${baseUrl}/Account/login`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        toast.success(response?.data?.message);
+        setIsLogin(true);
+        console.log("token", response?.data);
+        Cookies.set("token", response?.data?.data?.jwToken);
+        Navigate("/");
+      } catch (error) {
+        toast.error(error?.response?.data?.Message);
+      }
+    },
+  });
 
-    try {
-      // Send POST request to API
-      const response = await axios.post(`${baseUrl}/Account/login`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      toast.success(response?.data?.message);
-      setIsLogin(true);
-      Cookies.set("token", response?.data?.data?.jwToken);
-      Navigate("/");
-    } catch (error) {
-      toast.error(error?.response?.data?.Message);
-    }
-  };
-
-  console.log(Cookies.get("token"));
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -63,7 +73,7 @@ const Login = () => {
               to="/auth/signup"
               className="border-b border-theme-primaryBorder border-dotted text-theme-btnBgText font-semibold"
             >
-             SignUp{" "}
+              SignUp{" "}
             </Link>
           </p>
 
@@ -91,28 +101,31 @@ const Login = () => {
               </div>
 
               <div className="mx-auto max-w-xs">
-                <form onSubmit={handleLogin}>
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-theme-primaryBg border border-theme-primaryBorder placeholder-theme-tertiary text-sm focus:outline-none focus:border-gray-400 focus:bg-theme-secondaryBg text-theme-primary"
+                <form onSubmit={handleSubmit}>
+                  <InputField
+                    errors={errors.email}
+                    name="email"
                     type="email"
                     placeholder="Email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+                    values={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-theme-primaryBg border border-theme-primaryBorder placeholder-theme-tertiary text-sm focus:outline-none focus:border-gray-400 focus:bg-theme-secondaryBg text-theme-primary mt-5"
+
+                  <InputField
+                    errors={errors.password}
+                    name="password"
                     type="password"
                     placeholder="Password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
+                    values={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+
                   <button
                     type="submit"
-                    className="mt-5 tracking-wide font-semibold bg-theme-btnBg text-theme-btnColor w-full py-4 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                    className="mt-5 tracking-wide font-semibold bg-theme-btnBg text-theme-btnColor w-full py-4 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none hover:bg-theme-btnColorHover"
+                    
                   >
                     <MdLogin className="text-2xl text-theme-btnColor" />
                     <span className="ml-2">Log In</span>
