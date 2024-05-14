@@ -7,6 +7,8 @@ import InputField from "../../components/inputField";
 import { SignUpSchema } from "../../schemas";
 
 import { MdLogin } from "react-icons/md";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa6";
 import SignUpImg from "../../assests/signup-illustration.svg";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
@@ -21,6 +23,8 @@ const SignUp = () => {
     confirmPassword: "",
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const setIsLogin = useStore((state) => state.setIsLogin);
 
   // Environmental variable import
@@ -84,20 +88,37 @@ const SignUp = () => {
       type: "number",
       placeholder: "Phone Number",
       values: values.phoneNumber,
-    },
-    {
-      errors: errors.password,
-      name: "password",
-      type: "password",
-      placeholder: "Password",
-      values: values.password,
-    },
+    },{
+        errors: errors.password,
+        name: "password",
+        type: (!showPassword ? "password" : "text"),
+        placeholder: "Password",
+        values: values.password,
+        icon: (
+          <div className="z-30 cursor-pointer" onClick={() => setShowPassword(toggle => !toggle)}>
+            {!showPassword ? (
+              <FaRegEye className="absolute text-xl text-theme-secondary right-5 top-4" />
+            ) : (
+              <FaRegEyeSlash className="absolute text-xl text-theme-secondary right-5 top-4" />
+            )}
+          </div>
+        )
+      },           
     {
       errors: errors.confirmPassword,
       name: "confirmPassword",
-      type: "password",
+      type: (!showConfirmPassword ? "password" : "text"),
       placeholder: "Confirm Password",
       values: values.confirmPassword,
+      icon: (
+        <div className="z-30 cursor-pointer" onClick={() => setShowConfirmPassword(toggle => !toggle)}>
+          {!showConfirmPassword ? (
+            <FaRegEye className="absolute text-xl text-theme-secondary right-5 top-4" />
+          ) : (
+            <FaRegEyeSlash className="absolute text-xl text-theme-secondary right-5 top-4" />
+          )}
+        </div>
+      )
     },
   ];
 
@@ -105,7 +126,7 @@ const SignUp = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="max-w-screen-xl m-4 sm:m-10 shadow-lg rounded-lg flex justify-center items-center flex-1 bg-theme-primaryBg px-4 py-8 sm:p-0">
         {/* Image illustration */}
-        <div className="flex-1 bg-theme-btnBg text-center !h-full hidden lg:flex items-center rounded-l-lg">
+        <div className="flex-1 bg-theme-btnBg text-center !h-full hidden md:flex items-center rounded-l-lg">
           <img
             className="object-cover mx-auto p-16"
             src={SignUpImg}
@@ -136,7 +157,7 @@ const SignUp = () => {
           </p>
 
           <div className="flex flex-col items-center">
-            <div className="mx-auto max-w-xs">
+            <div className="mx-auto max-w-lg">
               <form onSubmit={handleSubmit}>
 
                  {/* Input fields */}
@@ -150,6 +171,7 @@ const SignUp = () => {
                     values={item.values}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    icon={item.icon}
                   />
                 ))}
 

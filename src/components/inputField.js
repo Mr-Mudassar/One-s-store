@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputField = ({errors, name, type, placeholder, values, onChange, onBlur}) => {
+const InputField = ({errors, name, type, placeholder, values, onChange, onBlur, icon=""}) => {
   return (
     <div className="relative my-6">
       <input
@@ -17,6 +17,8 @@ const InputField = ({errors, name, type, placeholder, values, onChange, onBlur})
           {errors}
         </p>
       )}
+
+      {icon}
     </div>
   );
 };
