@@ -21,9 +21,9 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
   const appThemeColor = useStore((state) => state.appThemeColor);
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
 
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
 
-  const UserData = jwtDecode(Cookies.get("token")).email
+  const UserData = jwtDecode(Cookies.get("token")).email;
 
   const Links = [
     {
@@ -49,7 +49,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
       func: () => {
         setUserDetailsModel((toggle) => !toggle);
         Cookies.remove("token");
-        Navigate("/auth/login")
+        Navigate("/auth/login");
       },
     },
   ];
@@ -98,9 +98,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
 
               <span className="text-sm text-theme-secondary overflow-hidden">
                 <b className="text-theme-primary">{UserData}</b>
-                <p className="text-theme-tertiary ">
-                  {UserData}
-                </p>
+                <p className="text-theme-tertiary ">{UserData}</p>
               </span>
             </div>
 
