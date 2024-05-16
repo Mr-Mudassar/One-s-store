@@ -12,6 +12,7 @@ import Dashboard from "./pages/dashboard";
 import Orders from "./pages/orders";
 import Stores from "./pages/stores";
 import Callback from "./pages/callback";
+import Testing from "./pages/auth/testing";
 
 function App() {
   const appThemeColor = useStore((state) => state.appThemeColor);
@@ -53,6 +54,7 @@ function App() {
           <Route path="/auth" element={<PublicRoutes />}>
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
+            <Route path="testing" element={<Testing />} />
           </Route>
 
           {/* Private routes */}

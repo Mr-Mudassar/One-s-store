@@ -54,7 +54,8 @@ const Login = () => {
         Cookies.set("token", response?.data?.data?.jwToken);
         Navigate("/");
       } catch (error) {
-        toast.error(error?.response?.data?.Message);
+        console.log(error.message)
+        toast.error(error?.message);
       }
     },
   });

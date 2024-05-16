@@ -1,6 +1,7 @@
 import React from "react";
 import MainCard from "./components/main-card";
 import SmallCard from "./components/small-card";
+import ChartComponent from "./components/chart";
 
 const Dashboard = () => {
   return (
@@ -8,7 +9,9 @@ const Dashboard = () => {
       <div className="flex justify-between m-auto flex-wrap gap-y-4">
         <div>
           <h5 className="font-bold text-theme-btnBgText text-xl">DASHBOARD</h5>
-          <p className="text-sm font-semibold text-theme-tertiary">Global view</p>
+          <p className="text-sm font-semibold text-theme-tertiary">
+            Global view
+          </p>
         </div>
 
         <div className="flex gap-4">
@@ -24,7 +27,12 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-4 gap-4">
         <MainCard />
         <SmallCard />
-        <SmallCard ImgUrl={"https://th.bing.com/th/id/OIP.pOh4X4d_pa5dQ3HT4dlQsAHaET?rs=1&pid=ImgDetMain"} />
+        <SmallCard
+          ImgUrl={
+            "https://th.bing.com/th/id/OIP.pOh4X4d_pa5dQ3HT4dlQsAHaET?rs=1&pid=ImgDetMain"
+          }
+        />
+        <ChartComponent />
       </div>
     </div>
   );
