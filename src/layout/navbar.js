@@ -143,10 +143,22 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
                   className="px-3 py-1 rounded-md flex text-sm text-theme-tertiary font-semibold border border-gray-200 hover:bg-theme-secondaryBg "
                 >
                   <div
-                    className={`rounded-full ${items.color} ${items.text} mr-1`}
-                  >
-                    ......
-                  </div>
+                    className={`rounded-full mr-1 w-5 h-5 ${
+                      items.color === "bg-red-600"
+                        ? "bg-red-600"
+                        : items.color === "bg-blue-600"
+                        ? "bg-blue-600"
+                        : items.color === "bg-yellow-500"
+                        ? "bg-yellow-500"
+                        : items.color === "bg-orange-600"
+                        ? "bg-orange-600"
+                        : items.color === "bg-green-600"
+                        ? "bg-green-600"
+                        : items.color === "bg-violet-600"
+                        ? "bg-violet-600"
+                        : ""
+                    } `}
+                  ></div>
                   <p>{items.name}</p>
                 </button>
               ))}
@@ -164,9 +176,9 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
                   document.documentElement.classList.add("dark");
                   setAppMode("dark");
                 }}
-                className="px-3 py-1 rounded-md flex text-sm text-theme-tertiary font-semibold border border-gray-200 hover:bg-theme-secondaryBg mt-2"
+                className="px-3 py-1 rounded-md flex text-sm text-gray-200 font-semibold border border-gray-200 bg-black hover:bg-stone-900 mt-2  justify-center"
               >
-                <FaRegMoon className="text-md text-theme-secondary my-auto mr-2" />
+                <FaRegMoon className="text-md text-gray-200  my-auto mr-2" />
                 <p>Dark</p>
               </button>
 
@@ -175,9 +187,9 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
                   document.documentElement.classList.remove("dark");
                   setAppMode("light");
                 }}
-                className="px-3 py-1 rounded-md flex text-sm text-theme-tertiary font-semibold border border-gray-200 hover:bg-theme-secondaryBg mt-2"
+                className="px-3 py-1 rounded-md flex text-sm text-stone-700 font-semibold border border-gray-200 bg-white hover:bg-stone-100 mt-2 justify-center"
               >
-                <FiSun className="text-md text-theme-secondary my-auto mr-2" />
+                <FiSun className="text-md text-stone-700 my-auto mr-2" />
                 <p>Light</p>
               </button>
             </div>
