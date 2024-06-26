@@ -2,6 +2,8 @@ import React from "react";
 import MainCard from "./components/main-card";
 import SmallCard from "./components/small-card";
 import ChartComponent from "./components/chart";
+import BarChart from "./components/bar-chart";
+import PieChart from "./components/pie-chart";
 
 const Dashboard = () => {
   return (
@@ -33,6 +35,8 @@ const Dashboard = () => {
           }
         />
         <ChartComponent />
+        <BarChart />
+        <PieChart />
       </div>
     </div>
   );

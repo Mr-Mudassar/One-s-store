@@ -93,6 +93,12 @@ const Sidebar = () => {
           {toggleSidebar && <p className="px-3 font-semibold"> {item.name}</p>}
         </Link>
       ))}
+
+
+      <div className="absolute bottom-3 left-1">
+        <span className="text-xs text-theme-secondary font-semibold mx-2">Developed by </span>
+        <div className="text-md text-theme-primary font-semibold mx-2"> Muhammad Mudassar</div>
+      </div>
     </div>
   );
 };
