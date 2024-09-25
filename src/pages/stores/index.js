@@ -4,11 +4,11 @@ import { MdOutlineAddHome } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 
 const Stores = () => {
   const token = Cookies.get("token");
-  const decoded = jwtDecode(token);
+  // const decoded = jwtDecode(token);
   const UserId = "08dc169c-2c94-4847-8d34-3b38509863bd";
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
 

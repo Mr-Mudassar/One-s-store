@@ -4,7 +4,7 @@ import UserImage from "../assests/navbar/user-img.png";
 import { useNavigate } from "react-router-dom";
 import ThemesData from "../data/themeColorsData.json";
 import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 
 //  importing icons
 import { FiSun } from "react-icons/fi";
@@ -14,16 +14,16 @@ import { MdOutlineSettings } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
 
 const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
-  const toggleSidebar = useStore((state) => state.toggleSidebar);
-
   const setAppMode = useStore((state) => state.setAppMode);
-
+  const toggleSidebar = useStore((state) => state.toggleSidebar);
   const appThemeColor = useStore((state) => state.appThemeColor);
   const setAppThemeColor = useStore((state) => state.setAppThemeColor);
 
   const Navigate = useNavigate();
 
-  const UserData = jwtDecode(Cookies.get("token")).email;
+  // const UserData = jwtDecode(Cookies.get("token")).email;
+  const UserData = JSON.parse(Cookies.get("token")).email;
+  console.log(JSON.parse(Cookies.get("token")).email)
 
   const Links = [
     {
@@ -97,7 +97,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
               </span>
 
               <span className="text-sm text-theme-secondary overflow-hidden">
-                <b className="text-theme-primary">{UserData}</b>
+                <b className="text-theme-btnBgText">{"Muhammad Mudassar"}</b>
                 <p className="text-theme-tertiary ">{UserData}</p>
               </span>
             </div>

@@ -9,9 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* Notification container start here*/}
     <ToastContainer
-      position="top-center"
+      position="top-right"
       autoClose={3000}
       hideProgressBar={false}
       newestOnTop={false}
@@ -23,7 +22,6 @@ root.render(
       theme="colored"
       transition={Bounce}
     />
-    {/* Notification container ended here */}
 
     <App />
   </React.StrictMode>

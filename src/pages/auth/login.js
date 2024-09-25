@@ -34,29 +34,43 @@ const Login = () => {
     initialValues: initialValues,
     validationSchema: LoginInSchema,
     onSubmit: async (values) => {
-      const formData = new FormData();
-      formData.append("Email", values.email);
-      formData.append("Password", values.password);
-
-      try {
-        const response = await axios.post(
-          `${baseUrl}/Account/login`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        toast.success(response?.data?.message);
+      if (
+        values.email === "mudassar@gmail.com" &&
+        values.password === "Password@1"
+      ) {
+        Cookies.set("token", JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }));
+        toast.success("Login Successful");
         setIsLogin(true);
-        console.log("token", response?.data);
-        Cookies.set("token", response?.data?.data?.jwToken);
         Navigate("/");
-      } catch (error) {
-        console.log(error.message)
-        toast.error(error?.message);
+      } else {
+        toast.error("Please enter valid credentials");
       }
+      // const formData = new FormData();
+      // formData.append("Email", values.email);
+      // formData.append("Password", values.password);
+
+      // try {
+      //   const response = await axios.post(
+      //     `${baseUrl}/Account/login`,
+      //     formData,
+      //     {
+      //       headers: {
+      //         "Content-Type": "multipart/form-data",
+      //       },
+      //     }
+      //   );
+      //   toast.success(response?.data?.message);
+      //   setIsLogin(true);
+      //   console.log("token", response?.data);
+      //   Cookies.set("token", response?.data?.data?.jwToken);
+      //   Navigate("/");
+      // } catch (error) {
+      //   console.log(error.message)
+      //   toast.error(error?.message);
+      // }
     },
   });
 
@@ -129,7 +143,10 @@ const Login = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     icon={
-                      <div className="z-30 cursor-pointer" onClick={() => setShowPassword(toggle => !toggle)}>
+                      <div
+                        className="z-30 cursor-pointer"
+                        onClick={() => setShowPassword((toggle) => !toggle)}
+                      >
                         {!showPassword ? (
                           <FaRegEye className="absolute text-xl text-theme-secondary right-5 top-4" />
                         ) : (

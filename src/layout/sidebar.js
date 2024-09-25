@@ -12,12 +12,10 @@ import {
 } from "react-icons/md";
 
 const Sidebar = () => {
-
   const location = useLocation();
 
   const toggleSidebar = useStore((state) => state.toggleSidebar);
   const setToggleSidebar = useStore((state) => state.setToggleSidebar);
-
 
   useEffect(() => {
     CloseSidebarOnSmallDevices();
@@ -87,18 +85,32 @@ const Sidebar = () => {
         <Link
           key={item.name}
           to={item.path}
-          className={`flex my-3 mx-2 rounded-md p-2 hover:cursor-pointer text-theme-secondary ${location.pathname === item.path ? "bg-theme-secondaryBg !text-theme-btnBgText shadow-md" : ""} hover:bg-theme-secondaryBg hover:text-theme-primary`}
+          className={`flex my-3 mx-2 rounded-md p-2 hover:cursor-pointer text-theme-secondary ${
+            location.pathname === item.path
+              ? "bg-theme-secondaryBg !text-theme-btnBgText shadow-md"
+              : ""
+          } hover:bg-theme-secondaryBg hover:text-theme-primary`}
         >
           {item.icon}
           {toggleSidebar && <p className="px-3 font-semibold"> {item.name}</p>}
         </Link>
       ))}
 
-
-      <div className="absolute bottom-3 left-1">
-        <span className="text-xs text-theme-secondary font-semibold mx-2">Developed by </span>
-        <div className="text-md text-theme-primary font-semibold mx-2"> Muhammad Mudassar</div>
-      </div>
+      {toggleSidebar && (
+        <div className="absolute bottom-3 left-1">
+          <span className="text-xs text-theme-secondary font-semibold mx-2">
+            Developed by
+          </span>
+          <div>
+            <Link
+              to={"https://dev-mudassar-portfolio.pantheonsite.io/"}
+              className="text-md font-semibold mx-2 text-theme-btnBgText"
+            >
+              Muhammad Mudassar
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
