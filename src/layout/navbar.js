@@ -1,17 +1,18 @@
 import React from "react";
+import Cookies from "js-cookie";
+import { motion } from "framer-motion";
 import useStore from "../hooks/useStore";
-import UserImage from "../assests/navbar/user-img.png";
 import { useNavigate } from "react-router-dom";
 import ThemesData from "../data/themeColorsData.json";
-import Cookies from "js-cookie";
+import UserImage from "../assests/navbar/user-img.png";
 // import { jwtDecode } from "jwt-decode";
 
 //  importing icons
 import { FiSun } from "react-icons/fi";
 import { FaRegMoon } from "react-icons/fa6";
+import { HiOutlineLogout } from "react-icons/hi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineSettings } from "react-icons/md";
-import { HiOutlineLogout } from "react-icons/hi";
 
 const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
   const setAppMode = useStore((state) => state.setAppMode);
@@ -23,7 +24,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
 
   // const UserData = jwtDecode(Cookies.get("token")).email;
   const UserData = JSON.parse(Cookies.get("token")).email;
-  console.log(JSON.parse(Cookies.get("token")).email)
+  console.log(JSON.parse(Cookies.get("token")).email);
 
   const Links = [
     {
@@ -106,14 +107,16 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
 
             {/* Links  */}
             {Links.map((item) => (
-              <div
+              <motion.div
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
                 key={item.name}
                 onClick={item.func}
                 className="flex text-theme-secondary my-3 mx-2 rounded-md py-2 px-3 hover:bg-theme-secondaryBg hover:text-theme-primary hover:cursor-pointer "
               >
                 {item.icon}
                 <p className="px-3 font-semibold text-sm"> {item.name}</p>
-              </div>
+              </motion.div>
             ))}
             {/* Links ended */}
 
@@ -124,7 +127,9 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
             {/* Theme different colors button */}
             <div className="grid justify-stretch gap-2 grid-cols-2">
               {ThemesData.themeColors.map((items) => (
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.1 }}
                   key={items.name}
                   disabled={appThemeColor === items.colorValue}
                   onClick={() => {
@@ -160,7 +165,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
                     } `}
                   ></div>
                   <p>{items.name}</p>
-                </button>
+                </motion.button>
               ))}
             </div>
             {/* Theme different colors button ended */}
@@ -171,7 +176,9 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
 
             {/* Dark and light mode button */}
             <div className="grid justify-stretch grid-cols-2 gap-2">
-              <button
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
                 onClick={() => {
                   document.documentElement.classList.add("dark");
                   setAppMode("dark");
@@ -180,9 +187,11 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
               >
                 <FaRegMoon className="text-md text-gray-200  my-auto mr-2" />
                 <p>Dark</p>
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
                 onClick={() => {
                   document.documentElement.classList.remove("dark");
                   setAppMode("light");
@@ -191,7 +200,7 @@ const Navbar = ({ userDetailsModel, setUserDetailsModel }) => {
               >
                 <FiSun className="text-md text-stone-700 my-auto mr-2" />
                 <p>Light</p>
-              </button>
+              </motion.button>
             </div>
           </div>
         )}

@@ -81,14 +81,12 @@ const ChartComponent = () => {
   };
 
   return (
-    <div className="w-full mx-auto col-span-1 sm:col-span-2">
-      <div className="bg-theme-primaryBg text-theme-secondary p-4 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-theme-primary">
-          Ethereum rate
-        </h2>
-        <div className="h-64">
-          <Line data={chartData} options={options} />
-        </div>
+    <div className="w-full mx-auto bg-theme-primaryBg text-theme-secondary">
+      <h2 className="text-2xl font-bold mb-4 text-theme-primary">
+        Sale Rate
+      </h2>
+      <div className="h-64">
+        <Line data={chartData} options={options} />
       </div>
     </div>
   );

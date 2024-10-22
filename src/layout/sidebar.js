@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import useStore from "../hooks/useStore";
-import { Link, useLocation } from "react-router-dom";
-
-// Icons import
-import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-import { LuStore } from "react-icons/lu";
-import { IoGiftOutline } from "react-icons/io5";
 import {
   MdOutlineDashboardCustomize,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import { motion } from "framer-motion";
+import useStore from "../hooks/useStore";
+import React, { useEffect } from "react";
+import { LuStore } from "react-icons/lu";
+import { LuUser2 } from "react-icons/lu";
+import { FaRegUser } from "react-icons/fa";
+import { IoGiftOutline } from "react-icons/io5";
+import { Link, useLocation } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -46,6 +47,11 @@ const Sidebar = () => {
       path: "/orders",
       icon: <IoGiftOutline className="text-2xl text-center my-auto" />,
     },
+    {
+      name: "Mudassar",
+      path: "/mudassar",
+      icon: <LuUser2 className="text-2xl text-center my-auto" />,
+    },
   ];
 
   return (
@@ -67,33 +73,47 @@ const Sidebar = () => {
         )}
 
         {/* Toggle sidebar button  */}
-        <div
+        <motion.div
+          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.1 }}
           onClick={() => setToggleSidebar(!toggleSidebar)}
-          className="my-auto cursor-pointer"
+          className="my-auto cursor-pointer rounded-md hover:bg-theme-secondaryBg mt-2"
         >
           {toggleSidebar ? (
-            <MdKeyboardDoubleArrowLeft className="text-4xl my-auto pt-2 text-theme-tertiary" />
+            <MdKeyboardDoubleArrowLeft
+              size={30}
+              className="text-4xl my-auto text-theme-tertiary"
+            />
           ) : (
-            <MdKeyboardDoubleArrowRight className="text-4xl my-auto pt-2 text-theme-tertiary" />
+            <MdKeyboardDoubleArrowRight
+              size={30}
+              className="text-4xl my-auto text-theme-tertiary"
+            />
           )}
-        </div>
+        </motion.div>
       </div>
 
       <div className="border border-dashed border-theme-primaryBorder mx-2"></div>
 
       {RoutesData.map((item) => (
-        <Link
-          key={item.name}
-          to={item.path}
-          className={`flex my-3 mx-2 rounded-md p-2 hover:cursor-pointer text-theme-secondary ${
-            location.pathname === item.path
-              ? "bg-theme-secondaryBg !text-theme-btnBgText shadow-md"
-              : ""
-          } hover:bg-theme-secondaryBg hover:text-theme-primary`}
-        >
-          {item.icon}
-          {toggleSidebar && <p className="px-3 font-semibold"> {item.name}</p>}
-        </Link>
+        <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+          <Link
+            key={item.name}
+            to={item.path}
+            className={`flex my-3  rounded-md p-2 hover:cursor-pointer text-theme-secondary ${
+              toggleSidebar ? "mx-4" : "mx-2"
+            }  ${
+              location.pathname === item.path
+                ? "bg-theme-secondaryBg !text-theme-btnBgText shadow-md"
+                : ""
+            } hover:bg-theme-secondaryBg hover:text-theme-primary`}
+          >
+            {item.icon}
+            {toggleSidebar && (
+              <p className="px-3 font-semibold"> {item.name}</p>
+            )}
+          </Link>
+        </motion.div>
       ))}
 
       {toggleSidebar && (

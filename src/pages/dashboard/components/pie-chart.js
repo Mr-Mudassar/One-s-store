@@ -7,22 +7,21 @@ import useStore from "../../../hooks/useStore";
 ChartJS.register(ArcElement, Tooltip);
 
 const PieChart = () => {
-
-    const appThemeColor = useStore((state) => state.appThemeColor);
-    const ChartColor =
-      appThemeColor === "bluish"
-        ? "blue"
-        : appThemeColor === "orangish"
-        ? "orange"
-        : appThemeColor === "redish"
-        ? "red"
-        : appThemeColor === "greenish"
-        ? "green"
-        : appThemeColor === "yellowish"
-        ? "yellow"
-        : appThemeColor === "violetish"
-        ? "violet"
-        : "red";
+  const appThemeColor = useStore((state) => state.appThemeColor);
+  const ChartColor =
+    appThemeColor === "bluish"
+      ? "blue"
+      : appThemeColor === "orangish"
+      ? "orange"
+      : appThemeColor === "redish"
+      ? "red"
+      : appThemeColor === "greenish"
+      ? "green"
+      : appThemeColor === "yellowish"
+      ? "yellow"
+      : appThemeColor === "violetish"
+      ? "violet"
+      : "red";
 
   const data = {
     labels: ["Label 1", "Label 2", "Label 3"],
@@ -40,14 +39,10 @@ const PieChart = () => {
   };
 
   return (
-    <div className="w-full mx-auto col-span-1 ">
-      <div className="bg-theme-primaryBg text-theme-secondary p-4 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-theme-primary">
-          Ethereum rate
-        </h2>
-        <div className="h-64 ">
-          <Doughnut data={data} options={options} className="mx-auto"/>
-        </div>
+    <div className="w-full bg-theme-primaryBg text-theme-secondary">
+      <h2 className="text-2xl font-bold mb-4 text-theme-primary">Sale Rate</h2>
+      <div className="h-64 ">
+        <Doughnut data={data} options={options} className="mx-auto" />
       </div>
     </div>
   );

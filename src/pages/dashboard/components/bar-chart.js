@@ -20,7 +20,6 @@ ChartJS.register(
 );
 
 function App() {
-
   const appThemeColor = useStore((state) => state.appThemeColor);
   const ChartColor =
     appThemeColor === "bluish"
@@ -38,48 +37,54 @@ function App() {
       : "red";
 
   return (
-    <div className="w-full mx-auto col-span-1">
-      <div className="bg-theme-primaryBg text-theme-secondary p-4 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-theme-primary">
-          Ethereum rate
-        </h2>
-        {/* <div className="h-34"> */}
-        <div style={{ maxWidth: "450px" }}>
-          <Bar
-            data={{
-              labels: ["1st bar", "2nd bar", "3rd bar", "4th bar", "5th bar", "6th bar", "7th bar", "8th bar", "9th bar"],
-              datasets: [
+    <div className="w-full bg-theme-primaryBg text-theme-secondary">
+      <h2 className="text-2xl font-bold mb-4 text-theme-primary">
+      Sale Rate
+      </h2>
+      <div style={{ maxWidth: "450px" }}>
+        <Bar
+          data={{
+            labels: [
+              "1st bar",
+              "2nd bar",
+              "3rd bar",
+              "4th bar",
+              "5th bar",
+              "6th bar",
+              "7th bar",
+              "8th bar",
+              "9th bar",
+            ],
+            datasets: [
+              {
+                label: "total count/value",
+                data: [1552, 1319, 613, 1400, 3366, 5423, 2034, 6432, 432],
+                backgroundColor: ChartColor,
+                borderColor: ChartColor,
+                borderWidth: 0.5,
+              },
+            ],
+          }}
+          height={256}
+          options={{
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [
                 {
-                  label: "total count/value",
-                  data: [1552, 1319, 613, 1400, 3366, 5423, 2034, 6432, 432],
-                  backgroundColor: ChartColor,
-                  borderColor: ChartColor,
-                  borderWidth: 0.5,
+                  ticks: {
+                    beginAtZero: true,
+                  },
                 },
               ],
-            }}
-            height={256}
-            options={{
-              maintainAspectRatio: false,
-              scales: {
-                yAxes: [
-                  {
-                    ticks: {
-                      beginAtZero: true,
-                    },
-                  },
-                ],
+            },
+            legend: {
+              labels: {
+                fontSize: 15,
               },
-              legend: {
-                labels: {
-                  fontSize: 15,
-                },
-              },
-            }}
-          />
-        </div>
+            },
+          }}
+        />
       </div>
-      {/* </div> */}
     </div>
   );
 }

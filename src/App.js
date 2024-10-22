@@ -13,6 +13,7 @@ import Orders from "./pages/orders";
 import Stores from "./pages/stores";
 import Callback from "./pages/callback";
 import Testing from "./pages/auth/testing";
+import Mudassar from "./pages/mudassar";
 
 function App() {
   const appThemeColor = useStore((state) => state.appThemeColor);
@@ -48,7 +49,7 @@ function App() {
       <Router>
         <Routes>
           {/* Not found (404) route */}
-          <Route path="*" element={<NotFound/>}/>
+          <Route path="*" element={<NotFound />} />
 
           {/* Public routes */}
           <Route path="/auth" element={<PublicRoutes />}>
@@ -62,10 +63,9 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="stores" element={<Stores />} />
             <Route path="orders" element={<Orders />} />
+            <Route path="mudassar" element={<Mudassar />} />
             <Route path="callback" element={<Callback />} />
           </Route>
-
-
         </Routes>
       </Router>
     </div>
