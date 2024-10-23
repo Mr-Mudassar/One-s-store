@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useStore from "../../hooks/useStore";
-import axios from "axios";
-import Cookies from "js-cookie";
-import InputField from "../../components/inputField";
-import { SignUpSchema } from "../../schemas";
-
-import { MdLogin } from "react-icons/md";
-import { FaRegEye } from "react-icons/fa";
-import { FaRegEyeSlash } from "react-icons/fa6";
-import SignUpImg from "../../assests/signup-illustration.svg";
-import { toast } from "react-toastify";
+// import axios from "axios";
+// import Cookies from "js-cookie";
 import { useFormik } from "formik";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { MdLogin } from "react-icons/md";
+import { toast } from "react-toastify";
+import { FaRegEye } from "react-icons/fa";
+import useStore from "../../hooks/useStore";
+import { SignUpSchema } from "../../schemas";
+import { FaRegEyeSlash } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router-dom";
+import InputField from "../../components/inputField";
 import ParticlesComponent from "../../components/particles";
+import SignUpImg from "../../assests/signup-illustration.svg";
 
 const SignUp = () => {
   const [email, setEmail] = useState();
@@ -38,6 +38,7 @@ const SignUp = () => {
     validationSchema: SignUpSchema,
     onSubmit: async (values) => {
       console.log(values);
+      toast.warning("This feature is Coming Soon");
 
       //   const formData = new FormData();
       //   formData.append("UserName", values.userName);
@@ -139,6 +140,7 @@ const SignUp = () => {
             className="object-cover mx-auto p-16"
             src={SignUpImg}
             alt="one's store login screen illustration"
+            loading="lazy"
           />
         </div>
 
@@ -183,13 +185,15 @@ const SignUp = () => {
                     />
                   ))}
 
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1 }}
                     type="submit"
-                    className="mt-5 tracking-wide font-semibold bg-theme-btnBg text-theme-btnColor w-full py-4 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none hover:bg-theme-btnColorHover"
+                    className="mt-5 tracking-wide font-semibold bg-theme-btnBg text-theme-btnColor w-full py-4 rounded-lg  flex items-center justify-center focus:shadow-outline focus:outline-none hover:bg-theme-btnColorHover"
                   >
                     <MdLogin className="text-2xl text-theme-btnColor" />
                     <span className="ml-2">Sign Up</span>
-                  </button>
+                  </motion.button>
                 </form>
                 <p className="mt-6 text-xs text-theme-tertiary text-center ">
                   I agree to{" "}

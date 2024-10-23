@@ -11,6 +11,7 @@ const MainCard = () => {
         src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5BEmAV2B1f79v28s9orL549CPexAccB0TZLCbmqev2ZadRiEQoF.jpg"
         alt="product"
         className="rounded-md object-cover w-full h-full"
+        loading="lazy"
       />
 
       {/* Content Section */}

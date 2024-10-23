@@ -1,18 +1,19 @@
 import useStore from "../../hooks/useStore";
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
-const ParticlesComponent = (props) => {
+// const ParticlesComponent = (props) => {
+const ParticlesComponent = React.memo((props) => {
   const [init, setInit] = useState(false);
+  const appMode = useStore((state) => state.appMode);
   const [linksColor, setLinksColor] = useState("#FF2C2C");
   const appThemeColor = useStore((state) => state.appThemeColor);
 
   useEffect(() => {
-    // Define a mapping of appThemeColor values to color codes
     const colorMapping = {
       redish: "#FF2C2C",
       bluish: "#2C9DFF",
@@ -75,13 +76,13 @@ const ParticlesComponent = (props) => {
       },
       particles: {
         color: {
-          value: "#FFFFFF",
+          value: appMode === "dark" ? "#FFFFFF" : "#454545",
         },
         links: {
           color: linksColor,
           distance: 150,
           enable: true,
-          opacity: 0.7,
+          opacity: 0.9,
           width: 1,
         },
         move: {
@@ -117,6 +118,6 @@ const ParticlesComponent = (props) => {
   //   );
 
   return <Particles id={props.id} init={particlesLoaded} options={options} />;
-};
+});
 
 export default ParticlesComponent;

@@ -5,7 +5,6 @@ import PieChart from "./components/pie-chart";
 import MainCard from "./components/main-card";
 import SmallCard from "./components/small-card";
 import ChartComponent from "./components/chart";
-import ParticlesComponent from "../../components/particles";
 
 const gridContainerVarient = {
   hidden: { opacity: 0 },
@@ -20,10 +19,9 @@ const gridSquareVarients = {
 const Dashboard = () => {
   return (
     <>
-      <ParticlesComponent />
       {/* +++++++++++++++++++++++++++ M Content Below ++++++++++++++++++++++++++ */}
 
-      <div className="space-y-4 items-center mx-auto ">
+      <div className="space-y-4 items-center mx-auto">
         <div className="flex justify-between m-auto flex-wrap gap-y-4">
           <div>
             <h5 className="font-bold text-theme-btnBgText text-xl">
@@ -38,32 +36,19 @@ const Dashboard = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
-              className="bg-theme-btnBg hover:bg-theme-btnColorHover p-3  rounded-md text-theme-btnColor text-sm font-semibold shadow-lg"
+              className="bg-theme-btnBg hover:bg-theme-btnColorHover p-3  rounded-md text-theme-btnColor text-sm font-semibold shadow-lg z-30"
             >
               More Details
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
-              className="bg-gray-200 text-theme-tertiary p-3 rounded-md text-sm font-semibold shadow-md hover:bg-slate-300"
+              className="bg-gray-200 text-theme-tertiary p-3 rounded-md text-sm font-semibold shadow-md hover:bg-slate-300 z-30"
             >
               View Details
             </motion.button>
           </div>
         </div>
-
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          <MainCard />
-          <SmallCard />
-          <SmallCard
-            ImgUrl={
-              "https://th.bing.com/th/id/OIP.pOh4X4d_pa5dQ3HT4dlQsAHaET?rs=1&pid=ImgDetMain"
-            }
-          />
-          <ChartComponent />
-          <BarChart />
-          <PieChart />
-        </div> */}
 
         <div className="flex flex-col overflow-x-hidden">
           <motion.section

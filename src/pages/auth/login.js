@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useStore from "../../hooks/useStore";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { useFormik } from "formik";
-import { LoginInSchema } from "../../schemas";
-
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import React, { useState } from "react";
 import { MdLogin } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { FaRegEye } from "react-icons/fa";
+import useStore from "../../hooks/useStore";
+import { LoginInSchema } from "../../schemas";
 import { FaRegEyeSlash } from "react-icons/fa6";
-
-import LoginImg from "../../assests/login-illustration.svg";
-import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import InputField from "../../components/inputField";
+import LoginImg from "../../assests/login-illustration.svg";
 import ParticlesComponent from "../../components/particles";
 
 const Login = () => {
@@ -21,12 +19,11 @@ const Login = () => {
     email: "",
     password: "",
   };
+  const [showPassword, setShowPassword] = useState(false);
   const setIsLogin = useStore((state) => state.setIsLogin);
 
-  const [showPassword, setShowPassword] = useState(false);
-
   // Environmental variable import
-  const baseUrl = process.env.REACT_APP_API_BASE_URL;
+  // const baseUrl = process.env.REACT_APP_API_BASE_URL;
   // UseNavigate
   const Navigate = useNavigate();
 
@@ -107,18 +104,16 @@ const Login = () => {
           <div className="flex flex-col items-center">
             <div className="w-full flex-1 mt-4">
               <div className="flex flex-col items-center ">
-                <button
-                  onClick={() =>
-                    toast.error(
-                      "SignIn with Goggle is not available now. Please SignIn using Email and Password"
-                    )
-                  }
-                  className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 text-theme-primary flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline bg-theme-secondaryBg"
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => toast.warning("This feature is Coming Soon")}
+                  className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 text-theme-primary flex items-center justify-center focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline bg-theme-secondaryBg"
                 >
                   {/* Google icon    */}
                   <FcGoogle className="text-2xl" />
                   <span className="ml-4">Sign In with Google</span>
-                </button>
+                </motion.button>
               </div>
 
               <div className="mt-7 mb-6 border-t border-theme-primaryBorder text-center mx-14">
@@ -161,13 +156,15 @@ const Login = () => {
                     }
                   />
 
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1 }}
                     type="submit"
-                    className="mt-5 tracking-wide font-semibold bg-theme-btnBg text-theme-btnColor w-full py-4 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none hover:bg-theme-btnColorHover"
+                    className="mt-5 tracking-wide font-semibold bg-theme-btnBg text-theme-btnColor w-full py-4 rounded-lg  flex items-center justify-center focus:shadow-outline focus:outline-none hover:bg-theme-btnColorHover"
                   >
                     <MdLogin className="text-2xl text-theme-btnColor" />
                     <span className="ml-2">Log In</span>
-                  </button>
+                  </motion.button>
                 </form>
                 <p className="mt-6 text-xs text-theme-tertiary text-center ">
                   I agree to{" "}
@@ -197,6 +194,7 @@ const Login = () => {
             className="object-cover mx-auto p-16"
             src={LoginImg}
             alt="one's store login screen illustration"
+            loading="lazy"
           />
         </div>
       </div>
