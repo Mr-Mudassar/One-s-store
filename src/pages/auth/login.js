@@ -14,6 +14,7 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import LoginImg from "../../assests/login-illustration.svg";
 import { toast } from "react-toastify";
 import InputField from "../../components/inputField";
+import ParticlesComponent from "../../components/particles";
 
 const Login = () => {
   const initialValues = {
@@ -38,10 +39,13 @@ const Login = () => {
         values.email === "mudassar@gmail.com" &&
         values.password === "Password@1"
       ) {
-        Cookies.set("token", JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }));
+        Cookies.set(
+          "token",
+          JSON.stringify({
+            email: values.email,
+            password: values.password,
+          })
+        );
         toast.success("Login Successful");
         setIsLogin(true);
         Navigate("/");
@@ -76,8 +80,9 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
+      <ParticlesComponent />
       {/* Form  */}
-      <div className="max-w-screen-xl m-4 sm:m-10 shadow-lg rounded-lg flex justify-center items-center flex-1 bg-theme-primaryBg px-4 py-8 sm:p-0">
+      <div className="max-w-screen-xl m-4 sm:m-10 shadow-lg rounded-lg flex justify-center items-center flex-1 bg-theme-primaryBg px-4 py-8 sm:p-0 z-50">
         <div className="lg:w-1/2 xl:w-5/12 p-0 sm:p-4">
           {/* <div> */}
           {/* Later we add logo here */}

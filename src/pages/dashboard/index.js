@@ -5,6 +5,7 @@ import PieChart from "./components/pie-chart";
 import MainCard from "./components/main-card";
 import SmallCard from "./components/small-card";
 import ChartComponent from "./components/chart";
+import ParticlesComponent from "../../components/particles";
 
 const gridContainerVarient = {
   hidden: { opacity: 0 },
@@ -19,6 +20,7 @@ const gridSquareVarients = {
 const Dashboard = () => {
   return (
     <>
+      <ParticlesComponent />
       {/* +++++++++++++++++++++++++++ M Content Below ++++++++++++++++++++++++++ */}
 
       <div className="space-y-4 items-center mx-auto ">
